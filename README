@@ -1,0 +1,9 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3102
+
+Vplinst stands for "VIM plugin installer" and is an attempt to make an automatic plugin installer for Vim. It installs scripts distributed in various different manners: vba (VimBall), tgz, .vim, .zip. You just configure the scripts you want in the vplinst.conf file, run the script and it will download and install them for you.
+
+This utility consists in awk and sh scripts, that almost match POSIX and may run in any UNIX operating system with /bin/sh and awk.
+
+Fork it on http://github.com/silasdb/vplinst
+
+Please, communicate any problems and bugs you experienced.
