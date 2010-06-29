@@ -104,7 +104,7 @@ install_plugin () {
 		install_plugin_vim "${tmpfile}" "${destfile}"
 		;;
 	"tgz")
-		echo tar zxf "${tmpfile}" -C "${basedir}"
+		tar zxf "${tmpfile}" -C "${basedir}"
 		;;
 	"zip")
 		unzip -o -d "${basedir}" "${tmpfile}"
@@ -148,8 +148,15 @@ download () {
 	local url target
 	url="$1"
 	target="$2"
-	# TODO: allow uses of other tools besides wget
-	wget -q -O "${target}" "${url}"
+	if which wget > /dev/null; then
+		wget -q -O "${target}" "${url}"
+	elif which ftp > /dev/null; then
+		ftp "${url}"
+		mv $(basename "${url}") "${target}"
+	else
+		echo 'No wget nor ftp found. Exit.'
+		exit 1
+	fi
 }
 
 main "$@"
